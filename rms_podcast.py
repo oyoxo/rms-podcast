@@ -234,15 +234,6 @@ with col1:
     user_code = st.text_input("Enter the access code to proceed:", type="password")
 
     if user_code == correct_code:
-        if submit_news:
-            # Add news to dataframe and reset input fields
-            #st.session_state.news_df = st.session_state.news_df.append({'Title': title, 'Text': text}, ignore_index=True)
-            # Create a new DataFrame for the new entry
-            new_entry = pd.DataFrame({'Title': [title], 'Text': [text]})
-            # Concatenate the new entry with the existing DataFrame
-            st.session_state.news_df = pd.concat([st.session_state.news_df, new_entry], ignore_index=True)
-        
-
         # Display the news dataframe
         #st.write(st.session_state.news_df)
         # Read the data into a DataFrame
