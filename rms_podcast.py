@@ -299,7 +299,7 @@ with col1:
                 Achten Sie darauf, die Informationen präzise und detailliert, jedoch so kompakt wie möglich zu halten, um in die vorgegebene Zeit zu passen.
                 Stellen Sie sicher, dass die Zusammenfassung die Neugier der Zuhörer weckt und sie dazu anregt, die vollständige Ausgabe zu erwerben oder ein Abonnement abzuschließen.
                 Die Informationen sollten aktuell und von hoher Relevanz für die Zielgruppe sein.
-                Die angestrebte Länge beträgt in etwa {word_range[0]} bis {word_range[1]} Wörter.
+                Die Länge des Textes soll ca. {word_range[0]} bis {word_range[1]} Wörter sein.
                 Der Podcast beginnt mit {intro_text} und endet mit {ending_text}.
                 Hier sind die Artikel Texte: {concatenated_text}"""
                 st.session_state.generated_text = generate_text(st.session_state.prompt)
