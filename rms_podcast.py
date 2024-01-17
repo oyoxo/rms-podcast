@@ -29,11 +29,11 @@ if 'generated_text' not in st.session_state:
 if 'text_generated' not in st.session_state:
     st.session_state.text_generated = False
 if 'word_range' not in st.session_state:
-    st.session_state.word_range = (550, 650)
+    st.session_state.word_range = (750, 850)
 if 'duration' not in st.session_state:
     st.session_state.duration = 5  # in minutes
 if 'intro_text' not in st.session_state:
-    st.session_state.intro_text = f"""Bienvenue dans le résumé de l'édition actuelle de la REVUE MÉDICALE SUISSE, numéro [Nummer] intitulée '[Titel]'. Découvrez les dernières avancées dans le domaine médical."""
+    st.session_state.intro_text = f"""Bienvenue dans le résumé de l'édition actuelle de la REVUE MÉDICALE SUISSE, numéro 855 intitulée 'Médecine Palliative'. Découvrez les dernières avancées dans le domaine médical."""
 if 'ending_text' not in st.session_state:
     st.session_state.ending_text = f"""Pour approfondir votre compréhension des sujets abordés dans cette édition, visitez revmed.ch. Restez informé avec la REVUE MÉDICALE SUISSE."""
 if 'podcast' not in st.session_state:
