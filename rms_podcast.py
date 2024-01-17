@@ -234,15 +234,6 @@ with col1:
     user_code = st.text_input("Enter the access code to proceed:", type="password")
 
     if user_code == correct_code:
-        # Use the data editor for manual news input
-        st.write("Manually Add Podcast News")
-        
-        with st.form("news_form", clear_on_submit=True):
-            title = st.text_input("News Title", key="news_title")
-            text = st.text_area("News Text", key="news_text")
-            submit_news = st.form_submit_button("Add News")
-        # Button to explicitly save changes from the data editor to the session state
-        
         if submit_news:
             # Add news to dataframe and reset input fields
             #st.session_state.news_df = st.session_state.news_df.append({'Title': title, 'Text': text}, ignore_index=True)
