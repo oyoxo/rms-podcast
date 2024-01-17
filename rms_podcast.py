@@ -33,11 +33,9 @@ if 'word_range' not in st.session_state:
 if 'duration' not in st.session_state:
     st.session_state.duration = 5  # in minutes
 if 'intro_text' not in st.session_state:
-    st.session_state.intro_text = f"""Willkommen bei "AI Minutes", dem wöchentlichen Podcast, der Ihnen die Welt der künstlichen Intelligenz näher bringt. 
-    Ich bin Ihre Gastgeberin, eine KI, die speziell für diesen Podcast geschaffen wurde. Jede Woche tauchen wir für fünf Minuten in die neuesten und spannendsten Entwicklungen, 
-    Durchbrüche und Kuriositäten der KI-Welt ein, die ich für Sie zusammengestellt habe. Bereit? Dann legen wir los!"""
+    st.session_state.intro_text = f"""Bienvenue dans le résumé de l'édition actuelle de la REVUE MÉDICALE SUISSE, numéro [Nummer] intitulée '[Titel]'. Découvrez les dernières avancées dans le domaine médical."""
 if 'ending_text' not in st.session_state:
-    st.session_state.ending_text = f"""Das war "AI Minutes" mit Ihrer KI-Moderatorin. Bis nächste Woche, wenn wir erneut in die Welt der künstlichen Intelligenz eintauchen."""
+    st.session_state.ending_text = f"""Pour approfondir votre compréhension des sujets abordés dans cette édition, visitez revmed.ch. Restez informé avec la REVUE MÉDICALE SUISSE."""
 if 'podcast' not in st.session_state:
     st.session_state.podcast = ""
 if 'prompt' not in st.session_state:    
@@ -169,11 +167,11 @@ def process_urls(urls):
         if url.strip():  # Check if URL is not empty
             article_text = process_direct_url(url)
             if article_text:
-                concatenated_text += f"\n\n--- Newsletter {index} ---\n\n{article_text}"
+                concatenated_text += f"\n\n--- Article {index} ---\n\n{article_text}"
             else:
-                concatenated_text += f"\n\n--- Newsletter {index} ---\n\nError processing this URL."
+                concatenated_text += f"\n\n--- Article {index} ---\n\nError processing this URL."
         else:
-            concatenated_text += f"\n\n--- Newsletter {index} ---\n\nNo URL provided."
+            concatenated_text += f"\n\n--- Article {index} ---\n\nNo URL provided."
     return concatenated_text
 
 # Function to get the user information from ElevenLabs
@@ -260,7 +258,7 @@ with col1:
         # Initialize the Google Sheet and worksheet
         # Setup gspread client
         client = setup_gspread()
-        spreadsheet = client.open("Netgen_AI_Podcast_Live")  # Replace with your actual sheet name
+        spreadsheet = client.open("Revmed_AI_Podcast")  # Replace with your actual sheet name
         worksheet = spreadsheet.worksheet("Sheet1")  # Replace with your actual worksheet name
 
         st.session_state.news_df = read_sheet_to_dataframe(worksheet)
@@ -296,13 +294,14 @@ with col1:
                 duration = st.session_state.duration
                 intro_text = st.session_state.intro_text
                 ending_text = st.session_state.ending_text
-                st.session_state.prompt = f"""Erstelle einen Podcast-Text in Deutsch, der auf unterhaltsame und leicht ironische Weise über die aktuellen und interessanten Entwicklungen 
-                in der Künstlichen Intelligenz berichtet. Der Text basiert auf Inhalten aus deutschsprachigen und englischsprachigen Newslettern.
-                Komplexe technische Details sollen vereinfacht dargestellt werden, um sie einem breiten Publikum verständlich zu machen. 
-                Der Text soll eine dynamische Struktur mit fließenden Übergängen und einer klaren Einleitung und Schlussfolgerung haben. 
-                Die angestrebte Länge beträgt ca. {duration} Minuten Sprechzeit, in etwa {word_range[0]} bis {word_range[1]} Wörter.
+                st.session_state.prompt = f"""Erstelle einen Podcast-Text in Französich anhand der gegebenen Artikel, der eine Zusammenfassung der aktuellen Ausgabe der Zeitschrift REVUE MÉDICALE SUISSE darstellt.
+                Die Zusammenfassung sollte die wichtigsten Forschungsergebnisse oder Themen beinhalten, die in der Ausgabe behandelt werden. 
+                Achten Sie darauf, die Informationen präzise und detailliert, jedoch so kompakt wie möglich zu halten, um in die vorgegebene Zeit zu passen.
+                Stellen Sie sicher, dass die Zusammenfassung die Neugier der Zuhörer weckt und sie dazu anregt, die vollständige Ausgabe zu erwerben oder ein Abonnement abzuschließen.
+                Die Informationen sollten aktuell und von hoher Relevanz für die Zielgruppe sein.
+                Die angestrebte Länge beträgt in etwa {word_range[0]} bis {word_range[1]} Wörter.
                 Der Podcast beginnt mit {intro_text} und endet mit {ending_text}.
-                Hier sind die Newsletter Texte: {concatenated_text}"""
+                Hier sind die Artikel Texte: {concatenated_text}"""
                 st.session_state.generated_text = generate_text(st.session_state.prompt)
                 st.session_state.text_generated = True
                 st.write("Podcast text generated.")
@@ -342,7 +341,7 @@ with col3:
     
         st.title("Generate Podcast Audio:")
         st.write(f"Remaining characters in ElevenLabs subscription: {formatted_remaining_characters}")
-        options = ["Lily","Serena", "Matilda", "Grace", "Bella", "Dorothy", "Elli", "Rachel", "Antoni", "Adam", "Domi", "Josh", "Sam"]
+        options = ["Bill","George", "Antoni", "Grace", "Bella", "Dorothy", "Elli", "Rachel", "Adam", "Domi", "Josh", "Sam"]
         voice = st.selectbox("Select a voice for the podcast:", options)
 
         if st.button("Generate Podcast Audio"):
