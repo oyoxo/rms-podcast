@@ -86,9 +86,9 @@ with st.sidebar:
     st.title("Podcast Settings")
     #input_choice = st.radio("Select Input Method", ('URLs', 'Manual Input'))
     st.session_state.word_range = st.slider("Word Range", 100, 1000, st.session_state.word_range, step=5)
-    st.session_state.duration = st.slider("Duration (minutes)", 1, 10, st.session_state.duration)
-    st.session_state.intro_text = st.text_area("Podcast Intro Text", st.session_state.intro_text)
-    st.session_state.ending_text = st.text_area("Podcast Ending Text", st.session_state.ending_text)
+    #st.session_state.duration = st.slider("Duration (minutes)", 1, 10, st.session_state.duration)
+    st.session_state.intro_text = st.text_area("Podcast Intro Text", st.session_state.intro_text, height="200")
+    st.session_state.ending_text = st.text_area("Podcast Ending Text", st.session_state.ending_text, height="200")
     st.session_state.lower_podcast = st.slider("Podcast Volume Decrease)", 5, 50, st.session_state.lower_podcast, step=5)
     st.session_state.lower_background = st.slider("Background Music Volume Decrease)", 25, 50, st.session_state.lower_background, step=5)
 
@@ -268,7 +268,7 @@ with col1:
             if not st.session_state.news_df.empty:
                 concatenated_manual_text = '\n\n'.join(st.session_state.news_df['Text'].tolist())
                 concatenated_text += '\n\n' + concatenated_manual_text
-                st.write(f"Processed manual text: {concatenated_manual_text}")
+                st.write(f"Processed text: {concatenated_manual_text}")
 
             if concatenated_text.strip():
                 # Generate the podcast text
@@ -278,7 +278,7 @@ with col1:
                 ending_text = st.session_state.ending_text
                 st.session_state.prompt = f"""Erstelle einen Podcast-Text in Französich anhand der gegebenen Artikel, der eine Zusammenfassung der aktuellen Ausgabe der Zeitschrift REVUE MÉDICALE SUISSE darstellt.
                 Die Zusammenfassung sollte die wichtigsten Forschungsergebnisse oder Themen beinhalten, die in der Ausgabe behandelt werden. 
-                Achten Sie darauf, die Informationen präzise und detailliert, jedoch so kompakt wie möglich zu halten, um in die vorgegebene Zeit zu passen.
+                Achten Sie darauf, die Informationen präzise und detailliert, jedoch so kompakt wie möglich zu halten.
                 Stellen Sie sicher, dass die Zusammenfassung die Neugier der Zuhörer weckt und sie dazu anregt, die vollständige Ausgabe zu erwerben oder ein Abonnement abzuschließen.
                 Die Informationen sollten aktuell und von hoher Relevanz für die Zielgruppe sein.
                 Die Länge des Textes soll ca. {word_range[0]} bis {word_range[1]} Wörter sein.
