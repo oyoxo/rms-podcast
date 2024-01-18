@@ -229,8 +229,8 @@ def stitch_audio_files(filenames, output_filename):
 # Streamlit UI for column 1
 # Streamlit UI for column 1
 with col1:
-    st.title("Generate Podcast Content")
-    correct_code = "netgenai3k1"
+    st.title("Generate Text2Speech")
+    correct_code = "netgenrms"
     user_code = st.text_input("Enter the access code to proceed:", type="password")
 
     if user_code == correct_code:
