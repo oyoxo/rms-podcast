@@ -87,8 +87,8 @@ with st.sidebar:
     #input_choice = st.radio("Select Input Method", ('URLs', 'Manual Input'))
     st.session_state.word_range = st.slider("Word Range", 100, 1000, st.session_state.word_range, step=5)
     #st.session_state.duration = st.slider("Duration (minutes)", 1, 10, st.session_state.duration)
-    st.session_state.intro_text = st.text_area("Podcast Intro Text", st.session_state.intro_text, height="200")
-    st.session_state.ending_text = st.text_area("Podcast Ending Text", st.session_state.ending_text, height="200")
+    st.session_state.intro_text = st.text_area("Podcast Intro Text", st.session_state.intro_text, height=200)
+    st.session_state.ending_text = st.text_area("Podcast Ending Text", st.session_state.ending_text, height=200)
     st.session_state.lower_podcast = st.slider("Podcast Volume Decrease)", 5, 50, st.session_state.lower_podcast, step=5)
     st.session_state.lower_background = st.slider("Background Music Volume Decrease)", 25, 50, st.session_state.lower_background, step=5)
 
