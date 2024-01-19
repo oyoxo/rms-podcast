@@ -14,8 +14,8 @@ from io import BytesIO
 from elevenlabs.api import User
 # Page configuration - #https://symbl.cc/en/emoji/animals-and-nature/
 st.set_page_config(
-    page_title="Generate Netgen AI Podcast",
-    page_icon="🔊",
+    page_title="RMS Text2Speech",
+    page_icon="💊",
     layout="wide",
     initial_sidebar_state="expanded"
 )
