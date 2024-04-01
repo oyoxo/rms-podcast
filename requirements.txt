@@ -8,4 +8,5 @@ pydub==0.25.1
 requests==2.31.0
 rich==13.7.0
 streamlit==1.29.0
+lxml[html_clean]
 ffmpeg-python
